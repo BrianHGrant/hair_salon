@@ -8,7 +8,7 @@
 
 #### Create Database
 
-CREATE DATABASE hair_salon;
+CREATE DATABASE hair_salon; <br>
 CREATE TABLE stylists (id serial PRIMARY KEY, first_name varchar, last_name varchar);
 CREATE TABLE clients (id serial PRIMARY KEY, first_name varchar, last_name varchar, stylist_id int);
 CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;
