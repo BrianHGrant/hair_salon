@@ -58,6 +58,11 @@ describe('add a client to the stylist path', {:type => :feature}) do
     stylist.save()
     visit('/stylists')
     click_link("#{stylist.id()}")
+    click_button('Add Client')
+    fill_in('first_name', :with => 'Francis')
+    fill_in('last_name', :with => 'Bean')
+    click_button('Add')
+    expect(page).to have_content("Bean Francis")
   end
 end
 
