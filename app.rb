@@ -29,3 +29,7 @@ post('/add_stylist') do
   @stylists = Stylist.all()
   erb(:stylists)
 end
+
+get('/stylists/:id') do
+
+end
