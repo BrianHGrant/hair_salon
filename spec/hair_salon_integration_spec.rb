@@ -27,3 +27,27 @@ describe('remove stylist path', {:type => :feature}) do
     expect(page).to have_content("There are no stylists in the database. Add a stylist below.")
   end
 end
+
+describe('view and add client path', {:type => :feature}) do
+  it('lists out the clients in the database') do
+    visit('/')
+    click_link('Clients')
+    expect(page).to have_content("There are no clients in the database. Add a client below.")
+    click_link('Add client')
+    fill_in('first_name', :with => 'Francis')
+    fill_in('last_name', :with => 'Bean')
+    click_button('Add')
+    expect(page).to have_content("Bean Francis")
+  end
+end
+
+describe('remove client path', {:type => :feature}) do
+  it('removes a saved client from the database') do
+    client = Client.new({:first_name => 'John', :last_name => 'Waters'})
+    client.save()
+    visit('/clients')
+    click_link("#{client.id()}")
+    click_button('Remove client')
+    expect(page).to have_content("There are no clients in the database. Add a client below.")
+  end
+end

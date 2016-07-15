@@ -1,0 +1,20 @@
+<h2>Client View</h2>
+<h3>Click client's <strong>ID</strong> to edit client, including to choose stylist and to remove.</h3>
+
+<% if @clients.any?() %>
+  <table>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>ID</th>
+    <% @clients.each() do |client| %>
+      <tr>
+        <td><%= client.last_name() %></td>
+        <td><%= client.first_name() %></td>
+        <td><a href="/clients/<%= client.id() %>"</a><%= client.id() %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h3>There are no clients in the database. Add a client below.</h3>
+<% end %>
+<a href="/clients/new">Add client</a>
