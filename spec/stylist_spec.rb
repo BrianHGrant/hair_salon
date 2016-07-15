@@ -42,4 +42,13 @@ describe ('Stylist') do
       expect(Stylist.all()).to(eq([test_stylist]))
     end
   end
+
+  describe('#remove') do
+    it('will remove a Stylist from the database') do
+      test_stylist = Stylist.new(:first_name => "August", :last_name => "West")
+      test_stylist.save()
+      test_stylist.remove()
+      expect(Stylist.all()).to(eq([]))
+    end
+  end
 end

@@ -27,4 +27,8 @@ class Stylist
     result = DB.exec("INSERT INTO stylists (first_name, last_name) VALUES ('#{@first_name}', '#{@last_name}') RETURNING id;")
     @id = result.first().fetch("id").to_i()
   end
+
+  define_method(:remove) do
+    DB.exec("DELETE FROM stylists WHERE id = #{self.id()}")
+  end
 end
