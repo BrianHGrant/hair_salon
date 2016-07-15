@@ -21,4 +21,10 @@ describe ('Client') do
         expect(test_client.id()).to(eq(75))
     end
   end
+
+  describe('.all') do
+    it('will return an empty array if no clients stored in database') do
+      expect(Client.all()).to(eq([]))
+    end
+  end
 end
