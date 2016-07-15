@@ -46,8 +46,12 @@ class Client
 
   define_method(:stylist) do
     returned_stylist = DB.exec("SELECT first_name, last_name FROM stylists WHERE id = #{self.stylist_id()};")
-    first_name = returned_stylist.first().fetch("first_name")
-    last_name = returned_stylist.first().fetch("last_name")
-    stylist = "" + first_name + " " + last_name + ""
+    stylist = nil
+    if returned_stylist.any?()
+      first_name = returned_stylist.first().fetch("first_name")
+      last_name = returned_stylist.first().fetch("last_name")
+      stylist = "" + first_name + " " + last_name + ""
+    end
+    stylist
   end
 end

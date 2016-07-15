@@ -10,7 +10,7 @@
     <% @clients.each() do |client| %>
       <tr>
         <td><%= client.last_name() %></td>
-        <td><%= client.first_name() %></td><td>(client_stylist)</td>
+        <td><%= client.first_name() %></td><td><%= client.stylist() %></td>
         <td><a href="/clients/<%= client.id() %>"</a><%= client.id() %></td>
       </tr>
     <% end %>
