@@ -1,0 +1,19 @@
+<h2>Stylist View</h2>
+
+<% if @stylists.any?() %>
+  <table>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>ID</th>
+    <% @stylists.each() do |stylist| %>
+      <tr>
+        <td><%= stylist.last_name() %></td>
+        <td><%= stylist.first_name() %></td>
+        <td><%= stylist.id() %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h3>There are no stylists in the database. Add a stylist below.</h3>
+<% end %>
+<a href="/stylists/new">Add stylist</a>
