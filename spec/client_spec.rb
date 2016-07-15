@@ -78,4 +78,13 @@ describe ('Client') do
       expect(test_client.stylist()).to(eq("August West"))
     end
   end
+
+  describe('#update') do
+    it('will update the stylist for a specific client') do
+      test_client = Client.new(:first_name => "Kate", :last_name => "Winslet", :stylist_id => 25)
+      test_client.save()
+      test_client.update({:stylist_id => 22})
+      expect(test_client.stylist_id()).to(eq(22))
+    end
+  end
 end

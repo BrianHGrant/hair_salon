@@ -1,5 +1,28 @@
 <h2>About: <%= @stylist.first_name() %> <%= @stylist.last_name() %></h2>
 
+<h3>Current Clients</h3>
+<% if @stylist.clients.any?() %>
+  <table>
+    <th>Last Name</th>
+    <th>First Name</th>
+    <th>Client ID</th>
+    <% @stylist.clients().each() do |client| %>
+      <tr>
+        <td><%= client.last_name() %></td>
+        <td><%= client.first_name() %></td>
+        <td><%= client.id() %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h3>There are no clients for this stylist. Add one now</h3>
+<% end %>
+
+<form action ="/stylists/<%= @stylist.id() %>/client" method="post">
+  <input type="hidden" name="stylist_id" value="<%= @stylist.id() %>">
+  <button type="submit">Add Client</button>
+</form>
+
 <form action ="/stylists/<%= @stylist.id() %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <button type="submit">Remove stylist</button>

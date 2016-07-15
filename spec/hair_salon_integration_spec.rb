@@ -51,3 +51,12 @@ describe('remove client path', {:type => :feature}) do
     expect(page).to have_content("There are no clients in the database. Add a client below.")
   end
 end
+
+describe('add a client to the stylist path', {:type => :feature}) do
+  it('creates and adds a client to a specific stylist') do
+    stylist = Stylist.new({:first_name => 'John', :last_name => 'Waters'})
+    stylist.save()
+    visit('/stylists')
+    click_link("#{stylist.id()}")
+  end
+end

@@ -1,0 +1,17 @@
+<h2>Update Clients for: <%= @stylist.first_name() %> <%= @stylist.last_name() %></h2>
+
+<h3>Select an existing client:</h3>
+
+<form action="/stylists/<%= @stylist.id() %>/client" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <input type="hidden" name="stylist_id" value="<%= @stylist.id() %>">
+  <label for="client_id">Select a Client</label>
+  <select id="client_id" name="client_id" type = "text">
+    <% @clients.each() do |client| %>
+    <option value="<%= client.id() %>"> <%= client.first_name() %> <%= client.last_name() %> </option>
+    <% end %>
+  </select>
+  <button type="submit">Choose</button>
+</form>
+
+<h3>Create a new client:</h3>

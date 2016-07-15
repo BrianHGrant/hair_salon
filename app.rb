@@ -36,6 +36,19 @@ get('/stylists/:id') do
   erb(:stylist_info)
 end
 
+post('/stylists/:id/client') do
+  @stylist = Stylist.find(params.fetch('id').to_i())
+  @stylist_id = params.fetch("stylist_id").to_i()
+  @clients = Client.all()
+  erb(:stylist_client_form)
+end
+
+patch('/stylists/:id/client') do
+  stylist_id = params.fetch("stylist_id")
+  id = params.fetch('client_id')
+
+end
+
 delete('/stylists/:id') do
   @stylist = Stylist.find(params.fetch('id').to_i())
   @stylist.remove()
