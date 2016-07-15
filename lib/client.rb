@@ -22,4 +22,9 @@ class Client
   define_method(:==) do |another_client|
     self.id().eql?(another_client.id()).&(self.first_name().eql?(another_client.first_name())).&(self.last_name().eql?(another_client.last_name()))
   end
+
+  define_method(:save) do
+    result = DB.exec("INSERT INTO clients (first_name, last_name) VALUES ('#{@first_name}', '#{@last_name}') RETURNING id;")
+    @id = result.first().fetch("id").to_i()
+  end
 end
