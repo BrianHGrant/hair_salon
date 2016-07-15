@@ -26,4 +26,20 @@ describe ('Stylist') do
       expect(Stylist.all()).to(eq([]))
     end
   end
+
+  describe('#==') do
+    it('will return true for two stylists that are the same') do
+      test_stylist = Stylist.new(:first_name => "August", :last_name => "West")
+      test_stylist2 = Stylist.new(:first_name => "August", :last_name => "West")
+      expect(test_stylist).to(eq(test_stylist2))
+    end
+  end
+
+  describe('#save') do
+    it('will store a new Stylist to the database') do
+      test_stylist = Stylist.new(:first_name => "August", :last_name => "West")
+      test_stylist.save()
+      expect(Stylist.all()).to(eq([test_stylist]))
+    end
+  end
 end
