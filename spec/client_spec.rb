@@ -22,6 +22,13 @@ describe ('Client') do
     end
   end
 
+  describe('#id') do
+    it('will return the stylist id of a client') do
+      test_client = Client.new(:id => 75, :first_name => "August", :last_name => "West", :stylist_id => 25)
+        expect(test_client.stylist_id()).to(eq(25))
+    end
+  end
+
   describe('.all') do
     it('will return an empty array if no clients stored in database') do
       expect(Client.all()).to(eq([]))

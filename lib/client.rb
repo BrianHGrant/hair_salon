@@ -1,10 +1,11 @@
 class Client
-  attr_reader(:id, :first_name, :last_name)
+  attr_reader(:id, :first_name, :last_name, :stylist_id)
 
   define_method(:initialize) do |attributes|
     @id = attributes[:id] || nil
     @first_name = attributes.fetch(:first_name)
     @last_name = attributes.fetch(:last_name)
+    @stylist_id = attributes[:stylist_id] || nil
   end
 
   define_singleton_method(:all) do
