@@ -45,8 +45,11 @@ end
 
 patch('/stylists/:id/client') do
   stylist_id = params.fetch("stylist_id")
-  id = params.fetch('client_id')
-
+  client_id = params.fetch('client_id').to_i()
+  @client = Client.find(client_id)
+  @client.update({:stylist_id => stylist_id})
+  @stylist = Stylist.find(params.fetch('id').to_i())
+  erb(:stylist_info)
 end
 
 delete('/stylists/:id') do

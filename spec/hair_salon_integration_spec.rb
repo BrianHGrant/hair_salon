@@ -60,3 +60,19 @@ describe('add a client to the stylist path', {:type => :feature}) do
     click_link("#{stylist.id()}")
   end
 end
+
+describe('update stylist for existing client path', {:type => :feature}) do
+  it('updates the assigned stylist for a client') do
+    stylist = Stylist.new({:first_name => 'John', :last_name => 'Waters'})
+    stylist.save()
+    stylist_id = stylist.id().to_i()
+    client = Client.new({:first_name => 'Kate', :last_name => 'Winslet', :stylist_id => 43})
+    client.save()
+    visit('/stylists')
+    click_link("#{stylist.id()}")
+    click_button('Add Client')
+    select('Kate Winslet', :from => 'client_id')
+    click_button('Choose')
+    expect(page).to have_content("Winslet Kate")
+  end
+end
