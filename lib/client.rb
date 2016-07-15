@@ -15,17 +15,18 @@ class Client
       id = client.fetch("id").to_i()
       first_name = client.fetch("first_name")
       last_name = client.fetch("last_name")
-      clients.push(Client.new({:id => id, :first_name => first_name, :last_name => last_name}))
+      stylist_id = client.fetch("stylist_id").to_i()
+      clients.push(Client.new({:id => id, :first_name => first_name, :last_name => last_name, :stylist_id => stylist_id}))
     end
     clients
   end
 
   define_method(:==) do |another_client|
-    self.id().eql?(another_client.id()).&(self.first_name().eql?(another_client.first_name())).&(self.last_name().eql?(another_client.last_name()))
+    self.id().eql?(another_client.id()).&(self.first_name().eql?(another_client.first_name())).&(self.last_name().eql?(another_client.last_name())).&(self.stylist_id().eql?(another_client.stylist_id()))
   end
 
   define_method(:save) do
-    result = DB.exec("INSERT INTO clients (first_name, last_name) VALUES ('#{@first_name}', '#{@last_name}') RETURNING id;")
+    result = DB.exec("INSERT INTO clients (first_name, last_name, stylist_id) VALUES ('#{@first_name}', '#{@last_name}', #{@stylist_id}) RETURNING id;")
     @id = result.first().fetch("id").to_i()
   end
 

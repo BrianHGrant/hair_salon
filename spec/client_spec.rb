@@ -22,7 +22,7 @@ describe ('Client') do
     end
   end
 
-  describe('#id') do
+  describe('#stylist_id') do
     it('will return the stylist id of a client') do
       test_client = Client.new(:id => 75, :first_name => "August", :last_name => "West", :stylist_id => 25)
         expect(test_client.stylist_id()).to(eq(25))
@@ -37,15 +37,15 @@ describe ('Client') do
 
   describe('#==') do
     it('will return true for two clients that are the same') do
-      test_client = Client.new(:first_name => "August", :last_name => "West")
-      test_client2 = Client.new(:first_name => "August", :last_name => "West")
+      test_client = Client.new(:first_name => "August", :last_name => "West", :stylist_id => 25)
+      test_client2 = Client.new(:first_name => "August", :last_name => "West", :stylist_id => 25)
       expect(test_client).to(eq(test_client2))
     end
   end
 
   describe('#save') do
     it('will store a new Client to the database') do
-      test_client = Client.new(:first_name => "August", :last_name => "West")
+      test_client = Client.new(:first_name => "August", :last_name => "West", :stylist_id => 25)
       test_client.save()
       expect(Client.all()).to(eq([test_client]))
     end
@@ -53,7 +53,7 @@ describe ('Client') do
 
   describe('#remove') do
     it('will remove a Client from the database') do
-      test_client = Client.new(:first_name => "August", :last_name => "West")
+      test_client = Client.new(:first_name => "August", :last_name => "West", :stylist_id => 25)
       test_client.save()
       test_client.remove()
       expect(Client.all()).to(eq([]))
@@ -62,7 +62,7 @@ describe ('Client') do
 
   describe('.find') do
     it('will find a specific client based on its id') do
-      test_client = Client.new(:first_name => "August", :last_name => "West")
+      test_client = Client.new(:first_name => "August", :last_name => "West", :stylist_id => 25)
       test_client.save()
       expect(Client.find(test_client.id())).to(eq(test_client))
     end

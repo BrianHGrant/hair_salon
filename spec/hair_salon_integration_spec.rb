@@ -43,7 +43,7 @@ end
 
 describe('remove client path', {:type => :feature}) do
   it('removes a saved client from the database') do
-    client = Client.new({:first_name => 'John', :last_name => 'Waters'})
+    client = Client.new({:first_name => 'John', :last_name => 'Waters', :stylist_id => 43})
     client.save()
     visit('/clients')
     click_link("#{client.id()}")

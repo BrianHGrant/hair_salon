@@ -55,7 +55,8 @@ end
 post('/add_client') do
   first_name = params.fetch("first_name")
   last_name = params.fetch("last_name")
-  new_client = Client.new({:first_name => first_name, :last_name => last_name})
+  stylist_id = params.fetch("stylist_id")
+  new_client = Client.new({:first_name => first_name, :last_name => last_name, :stylist_id => stylist_id})
   new_client.save()
   @clients = Client.all()
   erb(:clients)
