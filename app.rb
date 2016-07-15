@@ -5,7 +5,7 @@ also_reload('lib/**/*.rb')
 require('./lib/stylist')
 require('pg')
 
-DB = PG.connect({:dbname => 'hair_salon_test'})
+DB = PG.connect({:dbname => 'hair_salon'})
 
 
 get('/') do
@@ -31,5 +31,13 @@ post('/add_stylist') do
 end
 
 get('/stylists/:id') do
+  @stylist = Stylist.find(params.fetch('id').to_i())
+  erb(:stylist_info)
+end
 
+delete('/stylists/:id') do
+  @stylist = Stylist.find(params.fetch('id').to_i())
+  @stylist.remove()
+  @stylists = Stylist.all()
+  erb(:stylists)
 end

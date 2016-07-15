@@ -22,7 +22,7 @@ describe('remove stylist path', {:type => :feature}) do
     stylist = Stylist.new({:first_name => 'John', :last_name => 'Waters'})
     stylist.save()
     visit('/stylists')
-    click_link('#{stylist.id()}')
+    click_link("#{stylist.id()}")
     click_button('Remove stylist')
     expect(page).to have_content("There are no stylists in the database. Add a stylist below.")
   end
