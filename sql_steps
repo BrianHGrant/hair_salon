@@ -1,0 +1,3 @@
+CREATE DATABASE hair_salon;
+CREATE TABLE stylists (id serial PRIMARY KEY, first_name varchar, las_name varchar);
+CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;
