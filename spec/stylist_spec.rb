@@ -18,6 +18,7 @@ describe ('Stylist') do
   describe('#id') do
     it('will return the id of a stylist') do
       test_stylist = Stylist.new(:id => 75, :first_name => "August", :last_name => "West")
+      expect(test_stylist.id()).to(eq(75))
     end
   end
 
