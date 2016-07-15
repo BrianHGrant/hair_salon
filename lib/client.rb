@@ -18,4 +18,8 @@ class Client
     end
     clients
   end
+
+  define_method(:==) do |another_client|
+    self.id().eql?(another_client.id()).&(self.first_name().eql?(another_client.first_name())).&(self.last_name().eql?(another_client.last_name()))
+  end
 end

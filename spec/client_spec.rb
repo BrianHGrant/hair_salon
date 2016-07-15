@@ -27,4 +27,12 @@ describe ('Client') do
       expect(Client.all()).to(eq([]))
     end
   end
+
+  describe('#==') do
+    it('will return true for two clients that are the same') do
+      test_client = Client.new(:first_name => "August", :last_name => "West")
+      test_client2 = Client.new(:first_name => "August", :last_name => "West")
+      expect(test_client).to(eq(test_client2))
+    end
+  end
 end
