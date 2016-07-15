@@ -20,4 +20,10 @@ describe ('Stylist') do
       test_stylist = Stylist.new(:id => 75, :first_name => "August", :last_name => "West")
     end
   end
+
+  describe('.all') do
+    it('will return an empty array if no stylists stored in database') do
+      expect(Stylist.all()).to(eq([]))
+    end
+  end
 end
