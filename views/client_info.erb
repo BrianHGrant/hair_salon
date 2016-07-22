@@ -1,5 +1,10 @@
 <h2>About: <%= @client.first_name() %> <%= @client.last_name() %></h2>
 
+<form action ="/clients/<%= @client.id() %>/stylist" method="post">
+  <input type="hidden" name="client_id" value="<%= @client.id() %>">
+  <button type="submit">Add Stylist</button>
+</form>
+
 <form action="/clients/<%= @client.id() %>/update" method="post">
   <input type="hidden" name="_method" value="patch">
   <label for="new_first_name">First Name</label>
