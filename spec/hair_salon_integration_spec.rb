@@ -94,3 +94,16 @@ describe('update stylist for existing client path', {:type => :feature}) do
     expect(page).to have_content("Winslet Kate")
   end
 end
+
+describe('update client name path', {:type => :feature}) do
+  it('updates name of client') do
+    client = Client.new({:first_name => 'John', :last_name => 'Waters'})
+    client.save()
+    visit('/clients')
+    click_link("#{client.id()}")
+    fill_in('first_name', :with => 'Francis')
+    fill_in('last_name', :with => 'Bean')
+    click_button('Update')
+    expect(page).to have_content("Francis Bean")
+  end
+end
