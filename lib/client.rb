@@ -60,4 +60,12 @@ class Client
     @id = self.id()
     DB.exec("UPDATE clients SET stylist_id = #{@stylist_id} WHERE id = #{@id};")
   end
+
+  define_method(:update_client) do |attributes|
+    @first_name = attributes.fetch(:first_name)
+    @last_name = attributes.fetch(:last_name)
+    @id = self.id()
+    DB.exec("UPDATE clients SET first_name = '#{@first_name}' WHERE id = #{@id};")
+    DB.exec("UPDATE clients SET last_name = '#{@last_name}'  WHERE id = #{@id};")
+  end
 end

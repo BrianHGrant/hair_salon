@@ -23,6 +23,15 @@
   <button type="submit">Add Client</button>
 </form>
 
+<form action="/stylists/<%= @stylist.id() %>/update" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="new_first_name">First Name</label>
+  <input type="text" name="new_first_name" value="<%= @stylist.first_name() %>">
+  <label for="new_last_name">Last Name</label>
+  <input type="text" name="new_last_name" value="<%= @stylist.last_name() %>">
+  <button type="submit">Update name</button>
+</form>
+
 <form action ="/stylists/<%= @stylist.id() %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <button type="submit">Remove stylist</button>

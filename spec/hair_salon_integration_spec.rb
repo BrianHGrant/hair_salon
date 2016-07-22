@@ -17,6 +17,19 @@ describe('view and add stylist path', {:type => :feature}) do
   end
 end
 
+describe('update stylist name path', {:type => :feature}) do
+  it('updates name of stylist') do
+    stylist = Stylist.new({:first_name => 'John', :last_name => 'Waters'})
+    stylist.save()
+    visit('/stylists')
+    click_link("#{stylist.id()}")
+    fill_in('first_name', :with => 'Francis')
+    fill_in('last_name', :with => 'Bean')
+    click_button('Update')
+    expect(page).to have_content("Francis Bean")
+  end
+end
+
 describe('remove stylist path', {:type => :feature}) do
   it('removes a saved stylist from the database') do
     stylist = Stylist.new({:first_name => 'John', :last_name => 'Waters'})

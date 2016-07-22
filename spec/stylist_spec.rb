@@ -73,4 +73,14 @@ describe ('Stylist') do
     end
   end
 
+  describe('#update') do
+    it('will update the first and last name of a stylist') do
+      test_stylist = Stylist.new(:first_name => "Kate", :last_name => "Winslet", :stylist_id => 25)
+      test_stylist.save()
+      test_stylist.update({:first_name => "Kathrine", :last_name => "Winslow"})
+      expect(test_stylist.first_name).to(eq("Kathrine"))
+      expect(test_stylist.last_name).to(eq("Winslow"))
+    end
+  end
+
 end
