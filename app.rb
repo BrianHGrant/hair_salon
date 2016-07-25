@@ -21,8 +21,7 @@ get('/stylists/new') do
   erb(:stylist_form)
 end
 
-# change to RESTFUL path
-post('/add_stylist') do
+post('/stylists') do
   first_name = params.fetch("first_name")
   last_name = params.fetch("last_name")
   new_stylist = Stylist.new({:first_name => first_name, :last_name => last_name})
@@ -52,7 +51,7 @@ patch('/stylists/:id/client') do
   erb(:stylist_info)
 end
 
-patch('/stylists/:id/update') do
+patch('/stylists/:id') do
   @stylist = Stylist.find(params.fetch('id').to_i())
   first_name = params.fetch('new_first_name')
   last_name = params.fetch('new_last_name')
@@ -60,7 +59,7 @@ patch('/stylists/:id/update') do
   erb(:stylist_info)
 end
 
-post('/stylists/:id/add_client') do
+post('/stylists/:id/client/new') do
   stylist_id = params.fetch("stylist_id")
   first_name = params.fetch("first_name")
   last_name = params.fetch("last_name")
@@ -87,7 +86,7 @@ get('/clients/new') do
 end
 
 #change to RESTFUL path
-post('/add_client') do
+post('/clients') do
   first_name = params.fetch("first_name")
   last_name = params.fetch("last_name")
   stylist_id = params.fetch("stylist_id")
@@ -116,7 +115,7 @@ patch('/clients/:id/stylist') do
   erb(:client_info)
 end
 
-patch('/clients/:id/update') do
+patch('/clients/:id') do
   @client = Client.find(params.fetch('id').to_i())
   first_name = params.fetch('new_first_name')
   last_name = params.fetch('new_last_name')

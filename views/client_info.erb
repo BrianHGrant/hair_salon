@@ -5,7 +5,7 @@
   <button type="submit">Add Stylist</button>
 </form>
 
-<form action="/clients/<%= @client.id() %>/update" method="post">
+<form action="/clients/<%= @client.id() %>" method="post">
   <input type="hidden" name="_method" value="patch">
   <label for="new_first_name">First Name</label>
   <input type="text" name="new_first_name" value="<%= @client.first_name() %>">
