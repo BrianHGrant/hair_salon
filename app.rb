@@ -1,4 +1,3 @@
-
 require('sinatra')
 require('sinatra/reloader')
 also_reload('lib/**/*.rb')
@@ -57,7 +56,7 @@ patch('/stylists/:id/update') do
   @stylist = Stylist.find(params.fetch('id').to_i())
   first_name = params.fetch('new_first_name')
   last_name = params.fetch('new_last_name')
-  @stylist.update({:first_name => first_name, :last_name => last_name})
+  @stylist.update_name({:first_name => first_name, :last_name => last_name})
   erb(:stylist_info)
 end
 
