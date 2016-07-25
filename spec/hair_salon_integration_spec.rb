@@ -1,6 +1,7 @@
 require('helper_spec')
 require('capybara/rspec')
 require('./app')
+require('launchy')
 Capybara.app = Sinatra::Application
 set(:show_expectations, false)
 
@@ -23,8 +24,8 @@ describe('update stylist name path', {:type => :feature}) do
     stylist.save()
     visit('/stylists')
     click_link("#{stylist.id()}")
-    fill_in('first_name', :with => 'Francis')
-    fill_in('last_name', :with => 'Bean')
+    fill_in('new_first_name', :with => 'Francis')
+    fill_in('new_last_name', :with => 'Bean')
     click_button('Update')
     expect(page).to have_content("Francis Bean")
   end
@@ -97,12 +98,12 @@ end
 
 describe('update client name path', {:type => :feature}) do
   it('updates name of client') do
-    client = Client.new({:first_name => 'John', :last_name => 'Waters'})
+    client = Client.new({:first_name => 'John', :last_name => 'Waters', :stylist_id => 43})
     client.save()
     visit('/clients')
     click_link("#{client.id()}")
-    fill_in('first_name', :with => 'Francis')
-    fill_in('last_name', :with => 'Bean')
+    fill_in('new_first_name', :with => 'Francis')
+    fill_in('new_last_name', :with => 'Bean')
     click_button('Update')
     expect(page).to have_content("Francis Bean")
   end
